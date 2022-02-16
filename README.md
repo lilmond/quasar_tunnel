@@ -19,4 +19,7 @@ Must know: networking and port forwarding
 - Set `ROUTE_TO_PORT` to where your Quasar server is listening to.
 - Run the script.
 
+## Diagram
+![Quasar Tunnel Diagram](https://user-images.githubusercontent.com/54730301/154272509-f0bfc10e-0e11-46e3-8d63-a919e085a716.jpg)
+
 Goodluck!
