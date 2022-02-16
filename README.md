@@ -19,6 +19,9 @@ Must know: networking and port forwarding
 - Set `ROUTE_TO_PORT` to where your Quasar server is listening to.
 - Run the script.
 
+# Known Issues
+- SRC client (victim side) packet router session not ending. Do not close `client.py` if you don't want this to happen, if so, just rerun `server.py` in your VPS.
+
 ## Diagram
 ![Quasar Tunnel Diagram](https://user-images.githubusercontent.com/54730301/154272509-f0bfc10e-0e11-46e3-8d63-a919e085a716.jpg)
 
