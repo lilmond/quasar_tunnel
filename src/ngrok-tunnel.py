@@ -34,16 +34,21 @@ def client_handle(client):
     print(f"Client {client_id} ({client_host}:{client_port}): Connected. Creating route socket...")
 
     route_sock = create_route_socket()
+    if not route_sock: client_sock.close(); return
     threading.Thread(target=route, args=[route_sock, client_sock], daemon=False).start()
     threading.Thread(target=route, args=[client_sock, route_sock], daemon=False).start()
     
     print(f"Client {client_id} ({client_host}:{client_port}): Routing...")
 
 def create_route_socket():
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.connect((ROUTE_TO_HOST, ROUTE_TO_PORT))
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((ROUTE_TO_HOST, ROUTE_TO_PORT))
 
-    return sock
+        return sock
+    except Exception:
+        print("Error: Unable to create route socket")
+        return
 
 def route(route_from, route_to):
     try:
